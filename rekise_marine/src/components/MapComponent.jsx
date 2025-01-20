@@ -8,6 +8,7 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { fromLonLat } from "ol/proj";
 import "../styles/MapComponent.css";
+import PropTypes from 'prop-types';
 
 const MapComponent = ({ onDrawComplete }) => {
   const mapRef = useRef(null);
@@ -84,7 +85,7 @@ const MapComponent = ({ onDrawComplete }) => {
         <button onClick={() => startDrawing("Polygon")}>Draw Polygon</button>
       </div>
       <div className="drawing-results">
-        <h3>Drawings:</h3>
+        <h3>Coordinates:</h3>
         {drawings.length === 0 ? (
           <p>No drawings yet</p>
         ) : (
@@ -110,6 +111,10 @@ const MapComponent = ({ onDrawComplete }) => {
       </div>
     </div>
   );
+};
+
+MapComponent.propTypes = {
+  onDrawComplete: PropTypes.func,
 };
 
 export default MapComponent;
